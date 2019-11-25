@@ -24,7 +24,7 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 import static org.awaitility.Awaitility.await;
 
 public class MainActivityInstrumentationTest {
-    final Dispatcher dispatcher = new Dispatcher() {
+    private final Dispatcher dispatcher = new Dispatcher() {
 
         @Override
         public MockResponse dispatch(RecordedRequest request) throws InterruptedException {
