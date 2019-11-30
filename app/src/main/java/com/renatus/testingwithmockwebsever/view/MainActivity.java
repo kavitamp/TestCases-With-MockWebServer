@@ -8,12 +8,12 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.renatus.testingwithmockwebsever.R;
 import com.renatus.testingwithmockwebsever.databinding.ActivityMainBinding;
-import com.renatus.testingwithmockwebsever.viewModel.CommentsViewModel;
-import com.renatus.testingwithmockwebsever.viewModel.MainViewModel;
+import com.renatus.testingwithmockwebsever.viewModel.MovieCharacterViewModel;
+import com.renatus.testingwithmockwebsever.viewModel.MovieDetailsViewModel;
 
 public class MainActivity extends AppCompatActivity {
-    MainViewModel mainViewModel;
-    CommentsViewModel commentsViewModel;
+    MovieCharacterViewModel movieCharacterViewModel;
+    MovieDetailsViewModel movieDetailsViewModel;
     ActivityMainBinding activityMainBinding;
 
     @Override
@@ -21,21 +21,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         activityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main);
 
-        mainViewModel = ViewModelProviders.of(this).get(MainViewModel.class);
-        commentsViewModel = ViewModelProviders.of(this).get(CommentsViewModel.class);
-        mainViewModel.init();
-        mainViewModel.getPosts().observe(this, posts -> {
+        movieCharacterViewModel = ViewModelProviders.of(this).get(MovieCharacterViewModel.class);
+        movieDetailsViewModel = ViewModelProviders.of(this).get(MovieDetailsViewModel.class);
 
-            if (posts != null) {
-                activityMainBinding.tvFirstPost.setText(posts.get(0).getTitle());
+        movieDetailsViewModel.init();
+        movieDetailsViewModel.getMovieDetails().observe(this, movieDetailResponse -> {
+            if (movieDetailResponse != null) {
+                activityMainBinding.tvMovieDetails.setText(movieDetailResponse.getTitle());
             }
         });
 
-        commentsViewModel.init();
-        commentsViewModel.getComment().observe(this, comments -> {
-            if (comments != null) {
-                activityMainBinding.tvFirstComment.setText(comments.get(0).getEmail());
+        movieCharacterViewModel.init();
+        movieCharacterViewModel.getMovieCharacterDetails().observe(this, movieCharacterResponses -> {
+            if (movieCharacterResponses != null) {
+                activityMainBinding.tvCharacterDetails.setText(movieCharacterResponses.getName());
             }
         });
+
     }
 }
