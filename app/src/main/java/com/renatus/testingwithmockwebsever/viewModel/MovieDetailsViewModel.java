@@ -10,9 +10,8 @@ import com.renatus.testingwithmockwebsever.models.repositories.MovieDetailReposi
 import com.renatus.testingwithmockwebsever.models.responses.MovieDetailResponse;
 
 public class MovieDetailsViewModel extends AndroidViewModel {
-    Application application;
+    private Application application;
     private MutableLiveData<MovieDetailResponse> mutableLiveData;
-    private MovieDetailRepository movieDetailRepository;
 
     public MovieDetailsViewModel(@NonNull Application application) {
         super(application);
@@ -23,7 +22,7 @@ public class MovieDetailsViewModel extends AndroidViewModel {
         if (mutableLiveData != null) {
             return;
         }
-        movieDetailRepository = MovieDetailRepository.getInstance(application);
+        MovieDetailRepository movieDetailRepository = MovieDetailRepository.getInstance();
         mutableLiveData = movieDetailRepository.getMovieCharacterDetails();
 
     }

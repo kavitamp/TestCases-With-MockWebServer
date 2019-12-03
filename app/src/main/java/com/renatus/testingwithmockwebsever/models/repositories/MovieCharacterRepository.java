@@ -1,7 +1,5 @@
 package com.renatus.testingwithmockwebsever.models.repositories;
 
-import android.app.Application;
-
 import androidx.lifecycle.MutableLiveData;
 
 import com.renatus.testingwithmockwebsever.configs.RetrofitService;
@@ -21,7 +19,7 @@ public class MovieCharacterRepository {
         apiService = RetrofitService.createService(APIService.class);
     }
 
-    public static MovieCharacterRepository getInstance(Application application) {
+    public static MovieCharacterRepository getInstance() {
         if (newsRepository == null) {
             newsRepository = new MovieCharacterRepository();
         }
