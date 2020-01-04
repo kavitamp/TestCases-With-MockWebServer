@@ -18,7 +18,7 @@ public class MovieCharacterViewModel extends AndroidViewModel {
         this.application = application;
     }
 
-    public void init() {
+    public void initMovieCharacterDetailsAPI() {
         if (mutableLiveData != null) {
             return;
         }

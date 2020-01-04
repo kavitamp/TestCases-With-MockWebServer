@@ -24,14 +24,14 @@ public class MainActivity extends AppCompatActivity {
         movieCharacterViewModel = ViewModelProviders.of(this).get(MovieCharacterViewModel.class);
         movieDetailsViewModel = ViewModelProviders.of(this).get(MovieDetailsViewModel.class);
 
-        movieDetailsViewModel.init();
+        movieDetailsViewModel.initMovieDetailsAPI();
         movieDetailsViewModel.getMovieDetails().observe(this, movieDetailResponse -> {
             if (movieDetailResponse != null) {
                 activityMainBinding.tvMovieDetails.setText(movieDetailResponse.getTitle());
             }
         });
 
-        movieCharacterViewModel.init();
+        movieCharacterViewModel.initMovieCharacterDetailsAPI();
         movieCharacterViewModel.getMovieCharacterDetails().observe(this, movieCharacterResponses -> {
             if (movieCharacterResponses != null) {
                 activityMainBinding.tvCharacterDetails.setText(movieCharacterResponses.getName());

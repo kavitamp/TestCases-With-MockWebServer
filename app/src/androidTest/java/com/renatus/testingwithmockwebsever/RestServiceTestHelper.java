@@ -6,9 +6,9 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class RestServiceTestHelper {
+class RestServiceTestHelper {
 
-    public static String convertStreamToString(InputStream inputStream) throws Exception {
+    private static String convertStreamToString(InputStream inputStream) throws Exception {
         BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         StringBuilder stringBuilder = new StringBuilder();
         String line;
@@ -19,7 +19,7 @@ public class RestServiceTestHelper {
         return stringBuilder.toString();
     }
 
-    public static String getStringFromFile(Context context, String filePath) throws Exception {
+    static String getStringFromFile(Context context, String filePath) throws Exception {
         final InputStream stream = context.getResources().getAssets().open(filePath);
 
         String text = convertStreamToString(stream);
