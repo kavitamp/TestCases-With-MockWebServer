@@ -73,7 +73,8 @@ To stall the execution of assert statements before receiving mocked API response
 We are using the Awaitility library to handle this asynchronous operation. One of its features is, we can add the waiting time.
 For example:
 
-```await().atMost(10, SECONDS).until(() -> write_your_waiting_condition);
+```
+await().atMost(10, SECONDS).until(() -> write_your_waiting_condition);
 ```
 
 In the above code, we have specified a maximum waiting time of 10 seconds and once the expected response arrives within the specified time, the remaining code gets executed.
